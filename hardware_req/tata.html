@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Automation - Tata Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Embedded CSS to ensure data display */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .header {
+      background-color: #004aad;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .header-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    /* Back button styles */
+    .back-button-container {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+    }
+    .back-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background-color: #006d77;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #005f66;
+    }
+    .back-icon {
+      width: 20px;
+      height: 20px;
+      stroke: white;
+    }
+    .data-display-container {
+      width: 100%; /* Full-screen width */
+      margin: 40px 0; /* Remove auto margin for horizontal centering, keep vertical margin */
+      padding: 20px;
+      background-color: white;
+      border-radius: 0; /* Remove border-radius for full-screen effect */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .submission-logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+    .data-display-content {
+      width: 100%;
+      max-width: 1200px; /* Keep content constrained to 1200px for readability */
+    }
+    .data-section {
+      margin-bottom: 20px;
+    }
+    .form-heading {
+      font-size: 24px;
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+    h4 {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+    p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    p span:first-child {
+      font-weight: 600;
+      color: #333;
+    }
+    p .value {
+      color: #555;
+    }
+    .separator-line {
+      border: 0;
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #004aad;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">DC Automation</div>
+  </div>
+
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <a href="project-details.html" class="back-button">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"></path>
+      </svg>
+      Back
+    </a>
+  </div>
+
+  <!-- Data Display Section -->
+  <div class="data-display-container" id="dataDisplayContainer">
+    <img src="images/925907693s.jpg" alt="DC Automation Logo" class="submission-logo" />
+    <h3>Tata System Specifications</h3>
+    <div class="data-display-content" id="dataDisplayContent">
+      <!-- End Systems (ES) -->
+      <div class="data-section">
+        <h3 class="form-heading">Engineering station (ES)</h3>
+        
+        <!-- Workstation Desktop PC -->
+        <div>
+          <h4>Workstation Desktop PC</h4>
+          <p><span>System Model:</span> <span class="value">HP Z2 Tower G9 Workstation Desktop PC</span></p>
+          <p><span>Processor Model:</span> <span class="value">12th Gen Intel® Core™ i7-12700 (20 CPUs), ~2.1GHz</span></p>
+          <p><span>Cores:</span> <span class="value">12</span></p>
+          <p><span>Threads:</span> <span class="value">20</span></p>
+          <p><span>Cache (L3, MB):</span> <span class="value">25 MB</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (32768MB RAM)</span></p>
+          <p><span>Graphic Card:</span> <span class="value">NVIDIA T400 4GB + Intel® UHD Graphics 770</span></p>
+          <p><span>Graphics Output:</span> <span class="value">HDMI / DisplayPort</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows 10 Enterprise LTSC 64-bit</span></p>
+          <p><span>Hard Disk:</span> <span class="value">DDR5 2 × 16 GB 1Rx8 PC5-4800B-UA0-1010-XT</span></p>
+          <p><span>Ethernet Ports:</span> <span class="value">1 × RJ-45 (Gigabit Ethernet)</span></p>
+          <p><span>Power Supply:</span> <span class="value">500–650W Typical PSU</span></p>
+          <p><span>DVD Writer:</span> <span class="value">ATA hp HLDS DVDRW GUD1N</span></p>
+          <p><span>Monitor Model:</span> <span class="value">HP P27 G5 FHD Monitor</span></p>
+          <p><span>Monitor Display:</span> <span class="value">1920 × 1080p (60 Hz)</span></p>
+          <p><span>Keyboard:</span> <span class="value">HP 125 Wired Keyboard</span></p>
+          <p><span>Mouse:</span> <span class="value">HP 125 Wired Mouse</span></p>
+          <p><span>I/O Ports:</span> <span class="value">1 × RJ-45 LAN, 4 × USB 3.0, 2 × USB 2.0, 1 × HDMI / DP, 3.5mm Audio Jack</span></p>
+          <p><span>KVM Switch:</span> <span class="value">CE820L – HDMI/USB/RJ-45 compatible</span></p>
+          <p><span>Printer:</span> <span class="value">HP LaserJet Pro 3203dw – Wireless, Ethernet, USB 2.0, Dual-Band Wi-Fi</span></p>
+          <p><span>RAID Configuration:</span> <span class="value">RAID 0, 1 (software-based for workstation)</span></p>
+          <p><span>Ports:</span> <span class="value">USB 2.0 Host, RJ-45, Wi-Fi, Power-In</span></p>
+        </div>
+      </div>
+
+      <!-- Other Systems (OS) -->
+      <div class="data-section">
+        <h3 class="form-heading">Operating station (OS)</h3>
+        
+        <!-- Workstation Desktop PC -->
+        <div>
+          <h4>Workstation Desktop PC</h4>
+          <p><span>System Model:</span> <span class="value">HP Z2 Tower G9 Workstation Desktop PC</span></p>
+          <p><span>Processor Model:</span> <span class="value">12th Gen Intel® Core™ i7-12700 (20 CPUs), ~2.1GHz</span></p>
+          <p><span>Cores:</span> <span class="value">12</span></p>
+          <p><span>Threads:</span> <span class="value">20</span></p>
+          <p><span>Cache (L3, MB):</span> <span class="value">25 MB</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (32768MB RAM)</span></p>
+          <p><span>Graphic Card:</span> <span class="value">Intel® UHD Graphics 770</span></p>
+          <p><span>Graphics Output:</span> <span class="value">HDMI / DisplayPort</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows 10 Enterprise LTSC 64-bit</span></p>
+          <p><span>Hard Disk:</span> <span class="value">512 GB NVMe SSD</span></p>
+          <p><span>Ethernet Ports:</span> <span class="value">1 port (Gigabit Ethernet)</span></p>
+          <p><span>Power Supply:</span> <span class="value">500–650W Typical PSU</span></p>
+          <p><span>DVD Writer:</span> <span class="value">ATA hp HLDS DVDRW GUD1N (Optional)</span></p>
+          <p><span>Monitor Model:</span> <span class="value">HP P27 G5 FHD Monitor</span></p>
+          <p><span>Monitor Display:</span> <span class="value">1920 × 1080p (60 Hz)</span></p>
+          <p><span>Keyboard:</span> <span class="value">HP 125 Wired Keyboard</span></p>
+          <p><span>Mouse:</span> <span class="value">HP 125 Wired Mouse</span></p>
+          <p><span>I/O Ports:</span> <span class="value">1 × RJ-45 LAN, 4 × USB 3.0, 2 × USB 2.0, 1 × HDMI / DP, 3.5mm Audio Jack</span></p>
+          <p><span>KVM Switch:</span> <span class="value">CE820L – HDMI/USB/RJ-45 compatible</span></p>
+          <p><span>Printer:</span> <span class="value">HP LaserJet Pro 3203dw – Wireless, Ethernet, USB 2.0, Dual-Band Wi-Fi</span></p>
+          <p><span>RAID Configuration:</span> <span class="value">Not applicable or minimal OS-level redundancy</span></p>
+          <p><span>Ports:</span> <span class="value">USB 2.0 Host, RJ-45, Wi-Fi, Power-In</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 DC Automation. All rights reserved.
+  </div>
+</body>
+</html>

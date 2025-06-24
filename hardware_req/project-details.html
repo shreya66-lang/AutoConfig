@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Automation - Project Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Embedded CSS to control logo size in Submitted Data */
+    .dc-logo {
+      max-width: 150px !important; /* Increased size for DC Automation logo, using !important to override style.css */
+      width: auto !important; /* Override the fixed width from style.css */
+      height: auto !important; /* Override the fixed height from style.css */
+      display: block;
+      margin: 0 auto 20px; /* Center the logo with some margin below */
+    }
+    .submission-logo {
+      max-width: 150px !important; /* Ensure consistency with embedded CSS, override style.css */
+      width: auto !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px; /* Broad enough for summary content */
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid rgba(0, 109, 119, 0.1);
+      box-shadow: -4px 0 15px rgba(0, 109, 119, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 999; /* Below home icon (z-index: 1000) */
+    }
+
+    /* Sidebar heading */
+    .sidebar-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #006d77;
+      text-transform: uppercase;
+      writing-mode: vertical-rl; /* Rotates text vertically */
+      transform: rotate(270deg); /* Adjusts orientation to be readable */
+      margin: 30px 0;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation links in sidebar */
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .sidebar-nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #1f2a44;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar-nav a:hover {
+      background: #f9fbfc;
+      color: #006d77;
+    }
+
+    /* Adjust main content to avoid overlap with sidebar */
+    body {
+      padding-right: 220px; /* Sidebar width + padding */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 150px;
+        padding: 15px;
+      }
+
+      .sidebar-heading {
+        font-size: 20px;
+        margin: 20px 0;
+      }
+
+      .sidebar-nav a {
+        font-size: 12px;
+        padding: 8px;
+      }
+
+      body {
+        padding-right: 170px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        width: 120px;
+        padding: 10px;
+      }
+
+      .sidebar-heading {
+        font-size: 18px;
+        margin: 15px 0;
+      }
+
+      .sidebar-nav a {
+        font-size: 11px;
+        padding: 6px;
+      }
+
+      body {
+        padding-right: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-heading">Licensing</div>
+    <div class="sidebar-nav">
+      <a href="siemens.html">Siemens</a>
+      <a href="rockwells.html">Rockwells</a>
+      <!-- Add more links as needed -->
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">DC Automation</div>
+  </div>
+
+  <!-- Home Icon -->
+  <div id="homeIconContainer" class="home-icon-container">
+    <a href="index.html">
+      <svg id="homeIcon" class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-container">
+    <!-- Left Side: Project Name, ID, Description -->
+    <div class="form-left">
+      <label for="project-name">Project Name</label>
+      <input type="text" id="project-name" name="project-name" placeholder="Enter project name" />
+
+      <label for="project-id">Project ID</label>
+      <input type="text" id="project-id" name="project-id" placeholder="Enter project ID" />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" placeholder="Enter description"></textarea>
+
+      <!-- Separator Line -->
+      <hr class="separator-line">
+
+      <!-- Parameters with Checkboxes -->
+      <div class="parameters-section">
+        <label class="parameter-label">
+          <input type="checkbox" name="parameter" value="pc-configuration" onchange="toggleForms(this)"> PC Configuration
+        </label>
+        <label class="parameter-label">
+          <input type="checkbox" name="parameter" value="servers" onchange="toggleForms(this)"> Servers
+        </label>
+        <label class="parameter-label">
+          <input type="checkbox" name="parameter" value="switch" onchange="toggleForms(this)"> Switch
+        </label>
+        <label class="parameter-label">
+          <input type="checkbox" name="parameter" value="kvm" onchange="toggleForms(this)"> KVM
+        </label>
+        <label class="parameter-label">
+          <input type="checkbox" name="parameter" value="printers" onchange="toggleForms(this)"> Printers
+        </label>
+      </div>
+    </div>
+
+    <!-- Right Side: Status, Revision, and Company -->
+    <div class="form-right">
+      <label for="status">Status</label>
+      <select id="status" name="status">
+        <option value="">-- Select an Option --</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="complete">Complete</option>
+        <option value="pending-vendor">Pending (from vendor)</option>
+        <option value="pending-dc">Pending (from DC)</option>
+        <option value="Onhold">Onhold</option>
+      </select>
+
+      <label for="revision">Revision</label>
+      <select id="revision" name="revision">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <label for="company">Company</label>
+      <select id="company" name="company" onchange="redirectToCompanyPage(this.value)">
+        <option value="">-- Select an Option --</option>
+        <option value="user">User</option>
+        <option value="bmm">BMM</option>
+        <option value="amns">AMNS</option>
+        <option value="tata">Tata</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Dynamic Forms Section -->
+  <div class="dynamic-forms-container">
+    <!-- PC Configuration Form -->
+    <div id="pc-configuration-form" class="dynamic-form" style="display: none;">
+      <div class="form-content">
+        <h3 class="form-heading">PC Configuration</h3>
+        <div class="form-left">
+          <label for="processor-model">Processor Model</label>
+          <select id="processor-model" name="processor-model">
+            <option value="">-- Select an Option --</option>
+            <option value="intel-i5">Intel Core i5</option>
+            <option value="intel-i7">Intel Core i7</option>
+            <option value="intel-i9">Intel Core i9</option>
+            <option value="Xeon gold 6430">Xeon gold 6430</option>
+            <option value="Xeon platinum 8480H">Xeon platinum 8480H</option>
+          </select>
+
+          <label for="cores">Cores</label>
+          <select id="cores" name="cores">
+            <option value="">-- Select an Option --</option>
+            <option value="4">4 Cores</option>
+            <option value="6">6 Cores</option>
+            <option value="8">8 Cores</option>
+            <option value="12">12 Cores</option>
+            <option value="16">16 Cores</option>
+            <option value="24">24 Cores</option>
+            <option value="32">32 Cores</option>
+            <option value="60">60 Cores</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="threads">Threads</label>
+          <select id="threads" name="threads">
+            <option value="">-- Select an Option --</option>
+            <option value="4">4 Threads</option>
+            <option value="8">8 Threads</option>
+            <option value="18">18 Threads</option>
+            <option value="20">20 Threads</option>
+            <option value="24">24 Threads</option>
+            <option value="32">32 Threads</option>
+            <option value="64">64 Threads</option>
+            <option value="120">120 Threads</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="cache">Cache</label>
+          <select id="cache" name="cache">
+            <option value="">-- Select an Option --</option>
+            <option value="6mb">6 MB</option>
+            <option value="9mb">9 MB</option>
+            <option value="12mb">12 MB</option>
+            <option value="16mb">16 MB</option>
+            <option value="24mb">24 MB</option>
+            <option value="30mb">30 MB</option>
+            <option value="36mb">36 MB</option>
+            <option value="45mb">45 MB</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="ram">RAM</label>
+          <select id="ram" name="ram">
+            <option value="">-- Select an Option --</option>
+            <option value="8gb">8 GB</option>
+            <option value="16gb">16 GB</option>
+            <option value="32gb">32 GB</option>
+            <option value="64gb">64 GB</option>
+            <option value="128gb">128 GB</option>
+            <option value="256gb">256 GB</option>
+            <option value="512gb">512 GB</option>
+            <option value="1tb">1 TB</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="raid">RAID</label>
+          <select id="raid" name="raid">
+            <option value="">-- Select an Option --</option>
+            <option value="raid-0">RAID 0</option>
+            <option value="raid-1">RAID 1</option>
+            <option value="raid-5">RAID 5</option>
+            <option value="raid-6">RAID 6</option>
+            <option value="raid-10">RAID 10</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="graphics-card">Graphics Card</label>
+          <select id="graphics-card" name="graphics-card">
+            <option value="">-- Select an Option --</option>
+            <option value="4gb, lag-free">4gb, Lag-Free</option>
+            <option value="8gb, lag-free">8gb, Lag-free</option>
+            <option value="16gb, lag-free">16gb, Lag-Free</option>
+            <option value="24gb, lag-free">24gb, Lag-Free</option>
+            <option value="32gb, lag-free">32gb, Lag-Free</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="graphics-output">Graphics Output</label>
+          <select id="graphics-output" name="graphics-output">
+            <option value="">-- Select an Option --</option>
+            <option value="hdmi">HDMI</option>
+            <option value="displayport">DisplayPort</option>
+            <option value="vga">VGA</option>
+            <option value="dvi">DVI</option>
+            <option value="usb-c">USB-C </option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="os">Operating System</label>
+          <select id="os" name="os">
+            <option value="">-- Select an Option --</option>
+            <option value="windows-10">Windows 10</option>
+            <option value="windows-11">Windows 11</option>
+            <option value="linux-ubuntu">Linux (Ubuntu)</option>
+            <option value="linux-fedora">Linux (Fedora)</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="hard-disk">Hard Disk</label>
+          <select id="hard-disk" name="hard-disk">
+            <option value="">-- Select an Option --</option>
+            <option value="3X1.2TB SSD + 1X1.2TB Hot Spare">3X1.2TB SSD + 1X1.2TB Hot Spare</option>
+            <option value="2X1.2TB SSD + 1X1.2TB Hot Spare">2X1.2TB SSD + 1X1.2TB Hot Spare</option>
+            <option value="4X1.2TB SSD + 1X1.2TB Hot Spare">4X1.2TB SSD + 1X1.2TB Hot Spare</option>
+            <option value="3X2TB HDD + 1X2TB Hot Spare">3X2TB HDD + 1X2TB Hot Spare</option>
+            <option value="4X2TB HDD + 1X2TB Hot Spare">4X2TB HDD + 1X2TB Hot Spare</option>
+            <option value="3X4TB SSD + 1X4TB Hot Spare">3X4TB SSD + 1X4TB Hot Spare</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+
+        <div class="form-right">
+          <label for="ethernet">Ethernet Ports</label>
+          <select id="ethernet" name="ethernet">
+            <option value="">-- Select an Option --</option>
+            <option value="Six nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Six nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="Four nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Four nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="Eight nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Eight nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="Two nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Two nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="Ten nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Ten nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="Sixteen nos. Giga-bit ethernet port, teaming capable & Wake on LAN support">Sixteen nos. Giga-bit ethernet port, teaming capable & Wake on LAN support</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="power">Power Supply</label>
+          <select id="power" name="power">
+            <option value="">-- Select an Option --</option>
+            <option value="Latest generation Hot Redundant Swappable">Latest generation Hot Redundant Swappable</option>
+            <option value="Dual Latest generation Hot Redundant Swappable">Dual Latest generation Hot Redundant Swappable</option>
+            <option value="Triple Latest generation Hot Redundant Swappable">Triple Latest generation Hot Redundant Swappable</option>
+            <option value="Quad Latest generation Hot Redundant Swappable">Quad Latest generation Hot Redundant Swappable</option>
+            <option value="Latest generation Hot Redundant Swappable (1+1 configuration)">Latest generation Hot Redundant Swappable (1+1 configuration)</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="dvd">DVD Writer</label>
+          <select id="dvd" name="dvd">
+            <option value="">-- Select an Option --</option>
+            <option value="In-built 16x DVD Writer">In-built 16x DVD Writer</option>
+            <option value="In-built 24x DVD Writer">In-built 24x DVD Writer</option>
+            <option value="In-built 8x DVD Writer">In-built 8x DVD Writer</option>
+            <option value="In-built 16x DVD Writer (Dual Layer)">In-built 16x DVD Writer (Dual Layer)</option>
+            <option value="none">None</option>
+          </select>
+
+          <!-- Monitor Configuration Section -->
+          <h4>Monitor Configuration</h4>
+
+          <label for="No of Monitors">No of Monitors</label>
+          <select id="No of Monitors" name="No of Monitors">
+            <option value="">-- Select an Option --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="More than 4">More than 4</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="monitor-size">Monitor Size</label>
+          <select id="monitor-size" name="monitor-size">
+            <option value="">-- Select an Option --</option>
+            <option value="19-inch">19-inch</option>
+            <option value="22-inch">22-inch</option>
+            <option value="24-inch">24-inch</option>
+            <option value="27-inch">27-inch</option>
+            <option value="32-inch">32-inch</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="number-of-monitor-ports">Number of Monitor Ports</label>
+          <input type="number" id="number-of-monitor-ports" name="number-of-monitor-ports" min="0" required />
+
+          <label for="type-of-port">Type of Port</label>
+          <select id="type-of-port" name="type-of-port">
+            <option value="">-- Select an Option --</option>
+            <option value="hdmi">HDMI</option>
+            <option value="displayport">DisplayPort</option>
+            <option value="vga">VGA</option>
+            <option value="dvi">DVI</option>
+            <option value="usb-c">USB-C</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="resolution">Resolution</label>
+          <select id="resolution" name="resolution">
+            <option value="">-- Select an Option --</option>
+            <option value="1080p">1920x1080 (1080p)</option>
+            <option value="1440p">2560x1440 (1440p)</option>
+            <option value="2160p">2560x1440 (1440p)</option>
+            <option value="4k">3840x2160 (4K)</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="ip-rating">IP Rating</label>
+          <select id="ip-rating" name="ip-rating">
+            <option value="">-- Select an Option --</option>
+            <option value="ip20">IP20</option>
+            <option value="ip40">IP40</option>
+            <option value="ip65">IP65</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="response-time">Response Time</label>
+          <select id="response-time" name="response-time">
+            <option value="">-- Select an Option --</option>
+            <option value="1ms">1ms</option>
+            <option value="5ms">5ms</option>
+            <option value="8ms">8ms</option>
+          </select>
+
+          <!-- Utilities Section -->
+          <h4>Utilities</h4>
+
+          <label for="keyboard">Keyboard</label>
+          <select id="keyboard" name="keyboard">
+            <option value="">-- Select an Option --</option>
+            <option value="High end Wired Keyboard">High end Wired Keyboard</option>
+            <option value="Mechanical Wired Keyboard">Mechanical Wired Keyboard</option>
+            <option value="Ergonomic Wired Keyboard">Ergonomic Wired Keyboard</option>
+            <option value="Compact Wired Keyboard">Compact Wired Keyboard</option>
+            <option value="Multimedia Wired Keyboard">Multimedia Wired Keyboard</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="mouse">Mouse</label>
+          <select id="mouse" name="mouse">
+            <option value="">-- Select an Option --</option>
+            <option value="Wired Optical Mouse">Wired Optical Mouse</option>
+            <option value="Wireless Optical Mouse">Wireless Optical Mouse</option>
+            <option value="Wired Laser Mouse">Wired Laser Mouse</option>
+            <option value="Wireless Laser Mouse">Wireless Laser Mouse</option>
+            <option value="Wired Ergonomic Mouse">Wired Ergonomic Mouse</option>
+            <option value="Wireless Ergonomic Mouse">Wireless Ergonomic Mouse</option>
+            <option value="Wired Mechanical Mouse">Wired Mechanical Mouse</option>
+            <option value="Wireless Mechanical Mouse">Wireless Mechanical Mouse</option>
+            <option value="Wired Gaming Mouse">Wired Gaming Mouse</option>
+            <option value="Wireless Gaming Mouse">Wireless Gaming Mouse</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="special-cables">Special Cables (I/O Ports)</label>
+          <select id="special-cables" name="special-cables">
+            <option value="">-- Select an Option --</option>
+            <option value="USB 3.2 or higher, 1 no. Audio line-out, Display Ports, Ethernet Ports">USB 3.2 or higher, 1 no. Audio line-out, Display Ports, Ethernet Ports</option>
+            <option value="USB 3.2 or higher, 1 no. Audio line-out, HDMI Port, Ethernet Ports">USB 3.2 or higher, 1 no. Audio line-out, HDMI Port, Ethernet Ports</option>
+            <option value="USB 3.2 or higher, 4 no. Audio line-out, Display Ports, Ethernet Ports">USB 3.2 or higher, 4 no. Audio line-out, Display Ports, Ethernet Ports</option>
+            <option value="USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports, USB-C Port">USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports, USB-C Port</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Servers Form -->
+    <div id="servers-form" class="dynamic-form" style="display: none;">
+      <div class="form-content">
+        <h3 class="form-heading">Servers</h3>
+        <div class="form-left">
+          <h4>Server Configuration</h4>
+          <label for="server-type">Server Type</label>
+          <select id="server-type" name="server-type">
+            <option value="">-- Select an Option --</option>
+            <option value="tower">Tower Server</option>
+            <option value="rack">Rack Server</option>
+            <option value="blade">Blade Server</option>
+            <option value="hyper-converged">Hyper-Converged Server</option>
+            <option value="industrial">Industrial Server</option>
+          </select>
+
+          <label for="processor">Processor (CPU)</label>
+          <select id="processor" name="processor">
+            <option value="">-- Select an Option --</option>
+            <option value="intel-xeon">Intel Xeon Silver / Gold / Platinum</option>
+            <option value="amd-epyc">AMD EPYC</option>
+            <option value="intel-core">Intel Core i7 / i9 (for light workloads)</option>
+          </select>
+
+          <label for="ram-capacity">RAM</label>
+          <select id="ram-capacity" name="ram-capacity">
+            <option value="">-- Select an Option --</option>
+            <option value="16gb">16GB</option>
+            <option value="32gb">32GB</option>
+            <option value="64gb">64GB</option>
+            <option value="128gb">128GB</option>
+            <option value="256gb">256GB</option>
+            <option value="512gb">512GB</option>
+            <option value="1tb-plus">1TB+</option>
+          </select>
+
+          <label for="storage-type">Storage Type</label>
+          <select id="storage-type" name="storage-type">
+            <option value="">-- Select an Option --</option>
+            <option value="hdd">HDD</option>
+            <option value="ssd">SSD</option>
+            <option value="nvme">NVMe SSD</option>
+            <option value="hybrid">Hybrid</option>
+          </select>
+
+          <label for="storage-capacity">Storage Capacity</label>
+          <select id="storage-capacity" name="storage-capacity">
+            <option value="">-- Select an Option --</option>
+            <option value="512gb">512GB</option>
+            <option value="1tb">1TB</option>
+            <option value="2tb">2TB</option>
+            <option value="4tb">4TB</option>
+            <option value="8tb-plus">8TB+</option>
+          </select>
+
+          <label for="raid-configuration">RAID Configuration</label>
+          <select id="raid-configuration" name="raid-configuration">
+            <option value="">-- Select an Option --</option>
+            <option value="raid-0">RAID 0</option>
+            <option value="raid-1">RAID 1</option>
+            <option value="raid-5">RAID 5</option>
+            <option value="raid-6">RAID 6</option>
+            <option value="raid-10">RAID 10</option>
+          </select>
+
+          <label for="graphics-support">Graphics Support</label>
+          <select id="graphics-support" name="graphics-support">
+            <option value="">-- Select an Option --</option>
+            <option value="integrated">Integrated Graphics</option>
+            <option value="nvidia">NVIDIA A-Series / RTX / Tesla</option>
+            <option value="amd">AMD Radeon Pro</option>
+            <option value="none">None (Headless Server)</option>
+          </select>
+        </div>
+
+        <div class="form-right">
+          <label for="power-supply">Power Supply</label>
+          <select id="power-supply" name="power-supply">
+            <option value="">-- Select an Option --</option>
+            <option value="single">Single PSU</option>
+            <option value="redundant">Redundant PSU</option>
+            <option value="quad">Quad PSU</option>
+          </select>
+
+          <label for="operating-system">Operating System</label>
+          <select id="operating-system" name="operating-system">
+            <option value="">-- Select an Option --</option>
+            <option value="windows-server">Windows Server</option>
+            <option value="linux">Linux (Ubuntu, CentOS, RHEL)</option>
+            <option value="vmware">VMware ESXi</option>
+            <option value="no-os">No OS (Preloaded BIOS only)</option>
+          </select>
+
+          <label for="network-ports">Network Ports</label>
+          <select id="network-ports" name="network-ports">
+            <option value="">-- Select an Option --</option>
+            <option value="2-ethernet">2× Gigabit Ethernet</option>
+            <option value="4-ethernet">4× Gigabit Ethernet</option>
+            <option value="10g-ethernet">10GbE Ports</option>
+            <option value="25g-ethernet">25GbE Ports</option>
+          </select>
+
+          <label for="cooling-system">Cooling System</label>
+          <select id="cooling-system" name="cooling-system">
+            <option value="">-- Select an Option --</option>
+            <option value="air">Air Cooling</option>
+            <option value="liquid">Liquid Cooling</option>
+            <option value="hybrid">Hybrid Cooling</option>
+          </select>
+
+          <label for="form-factor">Form Factor</label>
+          <select id="form-factor" name="form-factor">
+            <option value="">-- Select an Option --</option>
+            <option value="1u">1U</option>
+            <option value="2u">2U</option>
+            <option value="4u">4U</option>
+            <option value="tower">Tower</option>
+          </select>
+
+          <label for="management">Remote Management</label>
+          <select id="management" name="management">
+            <option value="">-- Select an Option --</option>
+            <option value="ipmi">IPMI</option>
+            <option value="ilo">HPE iLO</option>
+            <option value="idrac">Dell iDRAC</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Switch Form -->
+    <div id="switch-form" class="dynamic-form" style="display: none;">
+      <div class="form-content">
+        <h3 class="form-heading">Switch</h3>
+        <div class="form-left">
+          <label for="switch-type">Switch Type</label>
+          <select id="switch-type" name="switch-type">
+            <option value="">-- Select an Option --</option>
+            <option value="managed">Managed</option>
+            <option value="unmanaged">Unmanaged</option>
+            <option value="smart">Smart</option>
+          </select>
+
+          <label for="port-count">Port Count</label>
+          <select id="port-count" name="port-count">
+            <option value="">-- Select an Option --</option>
+            <option value="8">8 Ports</option>
+            <option value="16">16 Ports</option>
+            <option value="24">24 Ports</option>
+            <option value="48">48 Ports</option>
+          </select>
+
+          <label for="port-speed">Port Speed</label>
+          <select id="port-speed" name="port-speed">
+            <option value="">-- Select an Option --</option>
+            <option value="100mbps">100 Mbps</option>
+            <option value="1gbps">1 Gbps</option>
+            <option value="10gbps">10 Gbps</option>
+            <option value="25gbps">25 Gbps</option>
+          </select>
+
+          <label for="poe-support">PoE Support</label>
+          <select id="poe-support" name="poe-support">
+            <option value="">-- Select an Option --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="form-right">
+          <label for="uplink-ports">Uplink Ports</label>
+          <select id="uplink-ports" name="uplink-ports">
+            <option value="">-- Select an Option --</option>
+            <option value="2">2 Uplink Ports</option>
+            <option value="4">4 Uplink Ports</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="stacking">Stacking Capability</label>
+          <select id="stacking" name="stacking">
+            <option value="">-- Select an Option --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="management-interface">Management Interface</label>
+          <select id="management-interface" name="management-interface">
+            <option value="">-- Select an Option --</option>
+            <option value="web">Web Interface</option>
+            <option value="cli">CLI</option>
+            <option value="both">Both</option>
+            <option value="none">None</option>
+          </select>
+
+          <label for="power-supply-switch">Power Supply</label>
+          <select id="power-supply-switch" name="power-supply-switch">
+            <option value="">-- Select an Option --</option>
+            <option value="single">Single PSU</option>
+            <option value="redundant">Redundant PSU</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- KVM Form -->
+    <div id="kvm-form" class="dynamic-form" style="display: none;">
+      <div class="form-content">
+        <h3 class="form-heading">KVM</h3>
+        <div class="form-left">
+          <label for="kvm-type">KVM Type</label>
+          <select id="kvm-type" name="kvm-type">
+            <option value="">-- Select an Option --</option>
+            <option value="analog">Analog KVM</option>
+            <option value="digital">Digital KVM</option>
+            <option value="ip-based">IP-Based KVM</option>
+          </select>
+
+          <label for="port-capacity">Port Capacity</label>
+          <select id="port-capacity" name="port-capacity">
+            <option value="">-- Select an Option --</option>
+            <option value="8">8 Ports</option>
+            <option value="16">16 Ports</option>
+            <option value="32">32 Ports</option>
+            <option value="64">64 Ports</option>
+          </select>
+
+          <label for="connection-type">Connection Type</label>
+          <select id="connection-type" name="connection-type">
+            <option value="">-- Select an Option --</option>
+            <option value="vga">VGA</option>
+            <option value="hdmi">HDMI</option>
+            <option value="displayport">DisplayPort</option>
+            <option value="usb">USB</option>
+          </select>
+        </div>
+
+        <div class="form-right">
+          <label for="remote-access">Remote Access</label>
+          <select id="remote-access" name="remote-access">
+            <option value="">-- Select an Option --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="resolution-support">Resolution Support</label>
+          <select id="resolution-support" name="resolution-support">
+            <option value="">-- Select an Option --</option>
+            <option value="1080p">1920x1080 (1080p)</option>
+            <option value="1440p">2560x1440 (1440p)</option>
+            <option value="4k">3840x2160 (4K)</option>
+          </select>
+
+          <label for="power-redundancy">Power Redundancy</label>
+          <select id="power-redundancy" name="power-redundancy">
+            <option value="">-- Select an Option --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Printers Form -->
+    <div id="printers-form" class="dynamic-form" style="display: none;">
+      <div class="form-content">
+        <h3 class="form-heading">Printers</h3>
+        <div class="form-left">
+          <label for="printer-type">Printer Type</label>
+          <select id="printer-type" name="printer-type">
+            <option value="">-- Select an Option --</option>
+            <option value="laser">Laser</option>
+            <option value="inkjet">Inkjet</option>
+            <option value="thermal">Thermal</option>
+            <option value="dot-matrix">Dot Matrix</option>
+          </select>
+
+          <label for="print-speed">Print Speed</label>
+          <select id="print-speed" name="print-speed">
+            <option value="">-- Select an Option --</option>
+            <option value="20ppm">20 PPM</option>
+            <option value="30ppm">30 PPM</option>
+            <option value="40ppm">40 PPM</option>
+            <option value="50ppm-plus">50 PPM+</option>
+          </select>
+
+          <label for="resolution-printer">Resolution</label>
+          <select id="resolution-printer" name="resolution-printer">
+            <option value="">-- Select an Option --</option>
+            <option value="600dpi">600 DPI</option>
+            <option value="1200dpi">1200 DPI</option>
+            <option value="2400dpi">2400 DPI</option>
+          </select>
+        </div>
+
+        <div class="form-right">
+          <label for="connectivity">Connectivity</label>
+          <select id="connectivity" name="connectivity">
+            <option value="">-- Select an Option --</option>
+            <option value="usb">USB</option>
+            <option value="ethernet">Ethernet</option>
+            <option value="wifi">Wi-Fi</option>
+            <option value="bluetooth">Bluetooth</option>
+          </select>
+
+          <label for="duplex">Duplex Printing</label>
+          <select id="duplex" name="duplex">
+            <option value="">-- Select an Option --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="paper-size">Paper Size</label>
+          <select id="paper-size" name="paper-size">
+            <option value="">-- Select an Option --</option>
+            <option value="a4">A4</option>
+            <option value="a3">A3</option>
+            <option value="letter">Letter</option>
+            <option value="legal">Legal</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button class="submit-btn" onclick="displayData()">Submit</button>
+
+  <!-- Data Display Container -->
+  <div class="data-display-container" id="data-display-container">
+    <h3>Submitted Data</h3>
+    <div class="data-display-content" id="data-display-content"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 DC Automation. All rights reserved.
+  </div>
+
+  <script>
+    // Redirect to company-specific page
+    function redirectToCompanyPage(company) {
+      if (company && company !== "user") {
+        window.location.href = `${company}.html`;
+      }
+    }
+
+    // Toggle dynamic forms based on checkbox selection
+    function toggleForms(checkbox) {
+      const formId = `${checkbox.value}-form`;
+      const form = document.getElementById(formId);
+      form.style.display = checkbox.checked ? "flex" : "none";
+    }
+
+    // Display submitted data
+    function displayData() {
+      const dataDisplayContainer = document.getElementById("data-display-container");
+      const dataDisplayContent = document.getElementById("data-display-content");
+      dataDisplayContent.innerHTML = "";
+      dataDisplayContainer.style.display = "flex";
+
+      // Add the DC Automation logo at the top center
+      const dcLogo = document.createElement("img");
+      dcLogo.src = "images/925907693s.jpg";
+      dcLogo.className = "dc-logo";
+      dcLogo.alt = "DC Automation Logo";
+      dataDisplayContent.appendChild(dcLogo);
+
+      // General Project Details
+      const projectDetails = {
+        "Project Name": document.getElementById("project-name").value,
+        "Project ID": document.getElementById("project-id").value,
+        "Description": document.getElementById("description").value,
+        "Status": document.getElementById("status").value,
+        "Revision": document.getElementById("revision").value,
+        "Company": document.getElementById("company").value
+      };
+
+      // Create section for General Project Details
+      const generalSection = document.createElement("div");
+      generalSection.className = "data-section";
+      const generalHeading = document.createElement("h4");
+      generalHeading.textContent = "General Project Details";
+      generalSection.appendChild(generalHeading);
+
+      for (const [key, value] of Object.entries(projectDetails)) {
+        if (value) {
+          const p = document.createElement("p");
+          p.innerHTML = `<span>${key}:</span> <span class="value">${value}</span>`;
+          generalSection.appendChild(p);
+        }
+      }
+
+      // Add company logo based on selection
+      const company = document.getElementById("company").value;
+      let logoSrc = "";
+      if (company === "bmm") logoSrc = "images/bmm-logo.png";
+      else if (company === "amns") logoSrc = "images/amns-logo.png";
+      else if (company === "tata") logoSrc = "images/tata-logo.png";
+
+      if (logoSrc) {
+        const logo = document.createElement("img");
+        logo.src = logoSrc;
+        logo.className = "submission-logo";
+        logo.alt = `${company} logo`;
+        generalSection.insertBefore(logo, generalSection.firstChild);
+      }
+
+      dataDisplayContent.appendChild(generalSection);
+
+      // Dynamic Forms Data
+      const forms = ["pc-configuration", "servers", "switch", "kvm", "printers"];
+      forms.forEach(form => {
+        const checkbox = document.querySelector(`input[value="${form}"]`);
+        if (checkbox.checked) {
+          const formElement = document.getElementById(`${form}-form`);
+          const inputs = formElement.querySelectorAll("select, input");
+          const section = document.createElement("div");
+          section.className = "data-section";
+          const heading = document.createElement("h4");
+          heading.textContent = form.replace(/-/g, " ").toUpperCase();
+          section.appendChild(heading);
+
+          inputs.forEach(input => {
+            if (input.value && input.value !== "none") {
+              const label = formElement.querySelector(`label[for="${input.id}"]`);
+              const p = document.createElement("p");
+              p.innerHTML = `<span>${label.textContent}:</span> <span class="value">${input.value}</span>`;
+              section.appendChild(p);
+            }
+          });
+
+          if (section.children.length > 1) {
+            dataDisplayContent.appendChild(section);
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

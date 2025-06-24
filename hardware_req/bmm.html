@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Automation - BMM Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Embedded CSS to ensure data display */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .header {
+      background-color: #004aad;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .header-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: white; /* Explicitly set to white */
+    }
+    /* Back button styles */
+    .back-button-container {
+      position: absolute;
+      top: 70px; /* Position below the header (header height ~50px + 20px gap) */
+      left: 20px;
+    }
+    .back-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background-color: #006d77;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #142aba;
+    }
+    .back-icon {
+      width: 20px;
+      height: 20px;
+      stroke: white;
+    }
+    .data-display-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .submission-logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+    .data-display-content {
+      width: 100%;
+    }
+    .data-section {
+      margin-bottom: 20px;
+    }
+    .form-heading {
+      font-size: 24px;
+      color: #f7f8fa;
+      margin-bottom: 15px;
+    }
+    h4 {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+    p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    p span:first-child {
+      font-weight: 600;
+      color: #333;
+    }
+    p .value {
+      color: #555;
+    }
+    .separator-line {
+      border: 0;
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #004aad;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">DC Automation</div>
+  </div>
+
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <a href="project-details.html" class="back-button">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"></path>
+      </svg>
+      Back
+    </a>
+  </div>
+
+  <!-- Data Display Section -->
+  <div class="data-display-container" id="dataDisplayContainer">
+    <img src="images/925907693s.jpg" alt="DC Automation Logo" class="submission-logo" />
+    <h3>BMM System Specifications</h3>
+    <div class="data-display-content" id="dataDisplayContent">
+      <!-- End Systems (ES) -->
+      <div class="data-section">
+        <h3 class="form-heading">Engineering Station (ES)</h3>
+
+        <!-- PC Configuration -->
+        <div>
+          <h4>PC Configuration</h4>
+          <p><span>System Model:</span> <span class="value">HP Z2 Tower G9 Workstation Desktop PC</span></p>
+          <p><span>Processor Model:</span> <span class="value">12th Gen Intel® Core™ i7-12700 (20 CPUs), ~2.1GHz</span></p>
+          <p><span>Cores:</span> <span class="value">12</span></p>
+          <p><span>Threads:</span> <span class="value">20</span></p>
+          <p><span>Cache (L3, MB):</span> <span class="value">25 MB</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (32768MB RAM)</span></p>
+          <p><span>Graphic Card:</span> <span class="value">NVIDIA T400 4GB + Intel UHD Graphics 770</span></p>
+          <p><span>Graphics Output:</span> <span class="value">Mini DisplayPort</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows 10 Enterprise LTSC 64-bit</span></p>
+          <p><span>Hard Disk (SSD):</span> <span class="value">DDR5 (2x16 GB 1Rx8 PC5-4800B-UA0-1010-XT)</span></p>
+          <p><span>RAID Configuration:</span> <span class="value">--</span></p>
+          <p><span>Ethernet Ports:</span> <span class="value">1xRJ-45 (Gigabit Ethernet)</span></p>
+          <p><span>PCI Card:</span> <span class="value">Data Not Available</span></p>
+          <p><span>Siemens PCI Card:</span> <span class="value">--</span></p>
+          <p><span>DVD Writer:</span> <span class="value">ATA HP HLDS DVDRW GUD1N</span></p>
+          <p><span>Expansion Slots:</span> <span class="value">1 PCIe 3 x4 (x16 connector); 1 PCIe 3 x4 (x4 connector); 1 PCIe 3 x1 (x4 connector); 1 PCIe 5 x16 (x16 connector); 1 M.2 2230 PCIe 3 X1 for WLAN</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Monitor Configuration -->
+        <div>
+          <h4>Monitor Configuration</h4>
+          <p><span>No of Monitors:</span> <span class="value">1</span></p>
+          <p><span>System Model:</span> <span class="value">HP P27 G5 FHD Monitor</span></p>
+          <p><span>Display Type:</span> <span class="value">IPS</span></p>
+          <p><span>Resolution (Native):</span> <span class="value">FHD (1920 x 1080 @ 75 Hz)</span></p>
+          <p><span>Brightness:</span> <span class="value">250 nits</span></p>
+          <p><span>Response Time:</span> <span class="value">5ms GtG (with overdrive)</span></p>
+          <p><span>Connectivity:</span> <span class="value">3x HDMI, 2x USB, Stereo Mini Jack, RS232 in & out, 1x RJ 45, WiFi, Bluetooth</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz</span></p>
+          <p><span>Extra:</span> <span class="value">--</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Utilities -->
+        <div>
+          <h4>Utilities</h4>
+          <p><span>Keyboard:</span> <span class="value">HP 125 Wired Keyboard</span></p>
+          <p><span>I/O Ports:</span> <span class="value">Front: 4 SuperSpeed USB Type-A 10Gbps signaling rate (1 charging); 1 universal audio jack<br>Rear: 1 audio-in; 1 audio-out; 1 RJ-45; 2 DisplayPort™ 1.4; 2 SuperSpeed USB Type-A 10Gbps signaling rate; 1 SuperSpeed USB Type-A 5Gbps signaling rate; 3 USB Type-A 480Mbps signaling rate<br>1 VGA</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Servers -->
+        <div>
+          <h4>Servers</h4>
+          <p><span>Server Type:</span> <span class="value">--</span></p>
+          <p><span>Processor (CPU):</span> <span class="value">12th Gen Intel® Core™ i7-12700 (20 CPUs), ~2.1GHz</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (32768MB RAM)</span></p>
+          <p><span>Storage Type:</span> <span class="value">--</span></p>
+          <p><span>Storage Capacity:</span> <span class="value">SSD</span></p>
+          <p><span>RAID Config:</span> <span class="value">--</span></p>
+          <p><span>Graphic Support:</span> <span class="value">NVIDIA T400 4GB + Intel UHD Graphics 770</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows 10 Enterprise LTSC 64-bit</span></p>
+          <p><span>Network Ports:</span> <span class="value">1xRJ-45 (Gigabit Ethernet)</span></p>
+          <p><span>Cooling System:</span> <span class="value">Air Cooling</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Switch -->
+        <div>
+          <h4>Switch</h4>
+          <p><span>Switch Model:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>RJ Ports:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Switching Capacity In Gbps:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Uplink Interfaces:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>CPU:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Flash Memory:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Dram:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Fanless Architecture:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Extra:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- KVM -->
+        <div>
+          <h4>KVM</h4>
+          <p><span>KVM Switch Model:</span> <span class="value">Aten USB HDMI HDBaseT™ 2.0 KVM Extender (4K@100 m) CE820L</span></p>
+          <p><span>KVM Switch Transmitter:</span> <span class="value">1 x HDMI Female (Black), 1 x USB Type B Female (White), 1 x Mini Stereo Jack Female (Green), 1 x Mini Stereo Jack Female (Pink), 1 x RJ-45 Female (Black)</span></p>
+          <p><span>KVM Ports Receiver:</span> <span class="value">1 x HDMI Female (Black), 1 x USB Type A Female (White), 1 x Mini Stereo Jack Female (Green), 1 x Mini Stereo Jack Female (Pink), 1 x RJ-45 Female (Black)</span></p>
+          <p><span>RJ Support:</span> <span class="value">Cat 5e/6/6a cable</span></p>
+          <p><span>Video:</span> <span class="value">Up to 4K@90m (Cat 5e) / 100m (Cat 6/6a/ATEN 2L-2910 Cat6) 1080P@100m (Cat 5e/6/6a) *4K supported: 4096 x 2160 / 3840 x 2160 @ 60Hz (4:2:0); 4096 x 2160 / 3840 x 2160 @ 30Hz (4:4:4)</span></p>
+          <p><span>Power Consumption:</span> <span class="value">DC5V:2.87W</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Printers -->
+        <div>
+          <h4>Printers</h4>
+          <p><span>Printer Model:</span> <span class="value">HP LaserJet CP5225n Color Printer</span></p>
+          <p><span>Networking:</span> <span class="value">Built-in</span></p>
+          <p><span>Two-sided Printing:</span> <span class="value">Manual</span></p>
+          <p><span>Memory:</span> <span class="value">192MB (expandable up to 448MB)</span></p>
+          <p><span>Extra:</span> <span class="value">Ink Cartridge</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Big Screen -->
+        <div>
+          <h4>Big Screen</h4>
+          <p><span>Big Screen Model:</span> <span class="value">Samsung 4K Display QB65B</span></p>
+          <p><span>Display Type:</span> <span class="value">VA</span></p>
+          <p><span>Resolution (Native):</span> <span class="value">3840x2160</span></p>
+          <p><span>Brightness:</span> <span class="value">350 nit</span></p>
+          <p><span>Response Time:</span> <span class="value">Jul-16</span></p>
+          <p><span>Connectivity:</span> <span class="value">3x HDMI, 2x USB, Stereo Mini Jack, RS232 in & out, 1x RJ 45, WiFi, Bluetooth</span></p>
+          <p><span>Power Supply:</span> <span class="value">AC100-240V 50/60Hz</span></p>
+          <p><span>Extras:</span> <span class="value">--</span></p>
+        </div>
+      </div>
+
+      <!-- Operating Station (OS) -->
+      <div class="data-section">
+        <h3 class="form-heading">Operating Station (OS)</h3>
+
+        <!-- PC Configuration -->
+        <div>
+          <h4>PC Configuration</h4>
+          <p><span>System Model:</span> <span class="value">HPE ProLiant DL380 Gen10</span></p>
+          <p><span>Processor Model:</span> <span class="value">Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz (24 CPUs), ~2.4GHz</span></p>
+          <p><span>Cores:</span> <span class="value">12</span></p>
+          <p><span>Threads:</span> <span class="value">24</span></p>
+          <p><span>Cache (L3, MB):</span> <span class="value">16.5 MB</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (65536MB RAM)</span></p>
+          <p><span>Graphic Card:</span> <span class="value">--</span></p>
+          <p><span>Graphics Output:</span> <span class="value">VGA</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows Server 2019 Standard 64-bit (10.0, Build 17763)</span></p>
+          <p><span>Hard Disk (SSD):</span> <span class="value">2x SAS 1.92 TB, 2x 10K SAS DS 300GB</span></p>
+          <p><span>RAID Configuration:</span> <span class="value">RAID 0, 1 (software-based for workstation)</span></p>
+          <p><span>Ethernet Ports:</span> <span class="value">4 port (Gigabit Ethernet)</span></p>
+          <p><span>PCI Card:</span> <span class="value">--</span></p>
+          <p><span>Siemens PCI Card:</span> <span class="value">SIMATIC Miniport CP1623 PCIe</span></p>
+          <p><span>DVD Writer:</span> <span class="value">--</span></p>
+          <p><span>Expansion Slots:</span> <span class="value">--</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz (Redundant Power Supply)</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Monitor Configuration -->
+        <div>
+          <h4>Monitor Configuration</h4>
+          <p><span>No of Monitors:</span> <span class="value">1</span></p>
+          <p><span>System Model:</span> <span class="value">HP P24 G5 FHD Monitor</span></p>
+          <p><span>Display Type:</span> <span class="value">IPS</span></p>
+          <p><span>Resolution (Native):</span> <span class="value">FHD (1920 x 1080 @ 75 Hz)</span></p>
+          <p><span>Brightness:</span> <span class="value">250 nits</span></p>
+          <p><span>Response Time:</span> <span class="value">5ms GtG (with overdrive)</span></p>
+          <p><span>Connectivity:</span> <span class="value">3x HDMI, 2x USB, Stereo Mini Jack, RS232 in & out, 1x RJ 45, WiFi, Bluetooth</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz (Redundant Power Supply)</span></p>
+          <p><span>Extra:</span> <span class="value">--</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Utilities -->
+        <div>
+          <h4>Utilities</h4>
+          <p><span>Keyboard:</span> <span class="value">HP 125 Wired Mouse</span></p>
+          <p><span>I/O Ports:</span> <span class="value">1 × RJ-45 LAN, 4 × USB 3.0, 2 × USB 2.0, 1 × HDMI / DP, 3.5mm Audio Jack</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Servers -->
+        <div>
+          <h4>Servers</h4>
+          <p><span>Server Type:</span> <span class="value">--</span></p>
+          <p><span>Processor (CPU):</span> <span class="value">Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz (24 CPUs), ~2.4GHz</span></p>
+          <p><span>RAM:</span> <span class="value">32 GB DDR5 (65536MB RAM)</span></p>
+          <p><span>Storage Type:</span> <span class="value">--</span></p>
+          <p><span>Storage Capacity:</span> <span class="value">--</span></p>
+          <p><span>RAID Config:</span> <span class="value">RAID 0, 1 (software-based for workstation)</span></p>
+          <p><span>Graphic Support:</span> <span class="value">--</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz (Redundant Power Supply)</span></p>
+          <p><span>Operating System:</span> <span class="value">Windows Server 2019 Standard 64-bit (10.0, Build 17763)</span></p>
+          <p><span>Network Ports:</span> <span class="value">4 port (Gigabit Ethernet)</span></p>
+          <p><span>Cooling System:</span> <span class="value">Air cooling</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Switch -->
+        <div>
+          <h4>Switch</h4>
+          <p><span>Switch Model:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>RJ Ports:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Switching Capacity In Gbps:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Uplink Interfaces:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>CPU:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Flash Memory:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Dram:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Fanless Architecture:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Extra:</span> <span class="value">Cisco C1000-24T-4G-L - Catalyst 1000 24port GE, 4x1G SFP</span></p>
+          <p><span>Power Supply:</span> <span class="value">100 - 240 VAC 50/60 Hz (Redundant Power Supply)</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- KVM -->
+        <div>
+          <h4>KVM</h4>
+          <p><span>KVM Switch Model:</span> <span class="value">Aten USB HDMI HDBaseT™ 2.0 KVM Extender (4K@100 m) CE820L</span></p>
+          <p><span>KVM Switch Transmitter:</span> <span class="value">1 x HDMI Female (Black), 1 x USB Type B Female (White), 1 x Mini Stereo Jack Female (Green), 1 x Mini Stereo Jack Female (Pink), 1 x RJ-45 Female (Black)</span></p>
+          <p><span>KVM Ports Receiver:</span> <span class="value">1 x HDMI Female (Black), 1 x USB Type A Female (White), 1 x Mini Stereo Jack Female (Green), 1 x Mini Stereo Jack Female (Pink), 1 x RJ-45 Female (Black)</span></p>
+          <p><span>RJ Support:</span> <span class="value">Cat 5e/6/6a cable</span></p>
+          <p><span>Video:</span> <span class="value">Up to 4K@90m (Cat 5e) / 100m (Cat 6/6a/ATEN 2L-2910 Cat6) 1080P@100m (Cat 5e/6/6a) *4K supported: 4096 x 2160 / 3840 x 2160 @ 60Hz (4:2:0); 4096 x 2160 / 3840 x 2160 @ 30Hz (4:4:4)</span></p>
+          <p><span>Power Consumption:</span> <span class="value">DC5V:2.87W</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Printers -->
+        <div>
+          <h4>Printers</h4>
+          <p><span>Printer Model:</span> <span class="value">HP LaserJet CP5225n Color Printer</span></p>
+          <p><span>Networking:</span> <span class="value">Built-in</span></p>
+          <p><span>Two-sided Printing:</span> <span class="value">Manual</span></p>
+          <p><span>Memory:</span> <span class="value">192MB (expandable up to 448MB)</span></p>
+          <p><span>Extra:</span> <span class="value">Ink Cartridge</span></p>
+        </div>
+
+        <hr class="separator-line">
+
+        <!-- Big Screen -->
+        <div>
+          <h4>Big Screen</h4>
+          <p><span>Big Screen Model:</span> <span class="value">Samsung 4K Display QB65B</span></p>
+          <p><span>Display Type:</span> <span class="value">VA</span></p>
+          <p><span>Resolution (Native):</span> <span class="value">3840x2160</span></p>
+          <p><span>Brightness:</span> <span class="value">350 nit</span></p>
+          <p><span>Response Time:</span> <span class="value">Jul-16</span></p>
+          <p><span>Connectivity:</span> <span class="value">3x HDMI, 2x USB, Stereo Mini Jack, RS232 in & out, 1x RJ 45, WiFi, Bluetooth</span></p>
+          <p><span>Power Supply:</span> <span class="value">AC100-240V 50/60Hz</span></p>
+          <p><span>Extras:</span> <span class="value">--</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 DC Automation. All rights reserved.
+  </div>
+</body>
+</html>

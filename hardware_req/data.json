@@ -1,0 +1,350 @@
+[
+  {
+    "ProcessorModel": "Intel i7-13700K",
+    "Cores": ["16"],
+    "Threads": ["24"],
+    "Cache": ["30MB"],
+    "RAM": [
+      "32GB, 4DIMM Base, Expandable up to 128GB",
+      "64GB, 4DIMM Base, Expandable up to 128GB"
+    ],
+    "RAID": [
+      "Supports RAID 0",
+      "Supports RAID 1"
+    ],
+    "GraphicsCard": [
+      "4 GB, Lag-Free",
+      "6 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "DisplayPort Multi display monitor",
+      "HDMI Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Windows Server 2022 STD OEM Pack or latest",
+      "Windows 11 Pro"
+    ],
+    "HardDisk": [
+      "3X1.2TB SSD + 1X1.2TB Hot Spare",
+      "2X1TB SSD + 2X1TB HDD"
+    ],
+    "EthernetPorts": [
+      "Four nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Six nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Latest generation Hot Redundant Swappable",
+      "Dual Latest generation Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "In-built 16x DVD Writer",
+      "None"
+    ],
+    "Monitor": [
+      "27'', min Resolution: FHD 1920 x 1080, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "24'', min Resolution: FHD 1920 x 1080, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "High end Wired Keyboard",
+      "Mechanical Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Optical Mouse",
+      "Wired Laser Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 1 no. Audio line-out, Display Ports, Ethernet Ports",
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports"
+    ]
+  },
+  {
+    "ProcessorModel": "Intel i9-13900K",
+    "Cores": ["24"],
+    "Threads": ["32"],
+    "Cache": ["36MB"],
+    "RAM": [
+      "64GB, 4DIMM Base, Expandable up to 256GB",
+      "128GB, 8DIMM Base"
+    ],
+    "RAID": [
+      "Supports RAID 1",
+      "Supports RAID 5"
+    ],
+    "GraphicsCard": [
+      "8 GB, Lag-Free",
+      "10 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "HDMI Multi display monitor",
+      "DisplayPort Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Windows Server 2019 STD OEM Pack or latest",
+      "Windows 10 Pro"
+    ],
+    "HardDisk": [
+      "2X1.2TB SSD + 1X1.2TB Hot Spare",
+      "3X2TB HDD"
+    ],
+    "EthernetPorts": [
+      "Four nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Six nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Dual Latest generation Hot Redundant Swappable",
+      "Triple Latest generation Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "In-built 24x DVD Writer",
+      "None"
+    ],
+    "Monitor": [
+      "24'', min Resolution: FHD 1920 x 1080, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "27'', min Resolution: QHD 2560 x 1440, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "Mechanical Wired Keyboard",
+      "Ergonomic Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Laser Mouse",
+      "Wired Ergonomic Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports",
+      "USB 3.2 or higher, 1 no. Audio line-out, HDMI Port, Ethernet Ports"
+    ]
+  },
+  {
+    "ProcessorModel": "Intel Xeon Silver 4410Y",
+    "Cores": ["12"],
+    "Threads": ["24"],
+    "Cache": ["30MB"],
+    "RAM": [
+      "128GB, 8DIMM Base, Expandable up to 512GB",
+      "256GB, 8DIMM Base"
+    ],
+    "RAID": [
+      "Supports RAID 5",
+      "Supports RAID 6"
+    ],
+    "GraphicsCard": [
+      "16 GB, Lag-Free",
+      "24 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "USB-C Multi display monitor",
+      "HDMI Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Windows Server 2016 STD OEM Pack or latest",
+      "Linux Ubuntu Server"
+    ],
+    "HardDisk": [
+      "4X1.2TB SSD + 1X1.2TB Hot Spare",
+      "6X2TB HDD"
+    ],
+    "EthernetPorts": [
+      "Eight nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Ten nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Triple Latest generation Hot Redundant Swappable",
+      "Quad Latest generation Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "In-built 8x DVD Writer",
+      "None"
+    ],
+    "Monitor": [
+      "32'', min Resolution: 4K 3840 x 2160, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "27'', min Resolution: QHD 2560 x 1440, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "Ergonomic Wired Keyboard",
+      "Compact Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Ergonomic Mouse",
+      "Wired Mechanical Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 1 no. Audio line-out, HDMI Port, Ethernet Ports",
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports"
+    ]
+  },
+  {
+    "ProcessorModel": "Intel Xeon Gold 6430",
+    "Cores": ["32"],
+    "Threads": ["64"],
+    "Cache": ["60MB"],
+    "RAM": [
+      "256GB, 8DIMM Base, Expandable up to 1TB",
+      "512GB, 8DIMM Base"
+    ],
+    "RAID": [
+      "Supports RAID 10",
+      "Supports RAID 5"
+    ],
+    "GraphicsCard": [
+      "24 GB, Lag-Free",
+      "32 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "Thunderbolt Multi display monitor",
+      "USB-C Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Linux (Ubuntu Server) or latest",
+      "Windows Server 2022 STD OEM Pack or latest"
+    ],
+    "HardDisk": [
+      "3X2TB HDD + 1X2TB Hot Spare",
+      "4X1TB SSD"
+    ],
+    "EthernetPorts": [
+      "Four nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Eight nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Quad Latest generation Hot Redundant Swappable",
+      "Triple Latest generation Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "In-built Blu-ray Writer",
+      "None"
+    ],
+    "Monitor": [
+      "27'', min Resolution: QHD 2560 x 1440, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "32'', min Resolution: 4K 3840 x 2160, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "Compact Wired Keyboard",
+      "Multimedia Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Mechanical Mouse",
+      "Wired Gaming Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 4 no. Audio line-out, Display Ports, Ethernet Ports",
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports, VGA Port"
+    ]
+  },
+  {
+    "ProcessorModel": "Intel Xeon Platinum 8490H",
+    "Cores": ["60"],
+    "Threads": ["120"],
+    "Cache": ["112.5MB"],
+    "RAM": [
+      "512GB, 8DIMM Base, Expandable up to 2TB",
+      "1TB, 8DIMM Base"
+    ],
+    "RAID": [
+      "Supports RAID 6",
+      "Supports RAID 10"
+    ],
+    "GraphicsCard": [
+      "32 GB, Lag-Free",
+      "48 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "VGA Multi display monitor",
+      "HDMI Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Linux (CentOS) or latest",
+      "Windows Server 2022 STD OEM Pack or latest"
+    ],
+    "HardDisk": [
+      "2X2TB HDD + 1X2TB Hot Spare",
+      "4X2TB SSD"
+    ],
+    "EthernetPorts": [
+      "Ten nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Twelve nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Latest generation Hot Redundant Swappable (1+1 configuration)",
+      "Dual Latest generation Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "In-built 16x DVD Writer (Dual Layer)",
+      "None"
+    ],
+    "Monitor": [
+      "22'', min Resolution: FHD 1920 x 1080, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "27'', min Resolution: QHD 2560 x 1440, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "Multimedia Wired Keyboard",
+      "Ergonomic Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Gaming Mouse",
+      "Wired Ergonomic Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports, VGA Port",
+      "USB 3.2 or higher, 4 no. Audio line-out, Display Ports, Ethernet Ports"
+    ]
+  },
+  {
+    "ProcessorModel": "Intel Xeon Gold 5318Y",
+    "Cores": ["16"],
+    "Threads": ["32"],
+    "Cache": ["45MB"],
+    "RAM": [
+      "1TB, 8DIMM Base, Expandable up to 4TB",
+      "512GB, 8DIMM Base"
+    ],
+    "RAID": [
+      "Supports RAID 5",
+      "Supports RAID 6"
+    ],
+    "GraphicsCard": [
+      "16 GB, Lag-Free",
+      "24 GB, Lag-Free"
+    ],
+    "GraphicsOutput": [
+      "Mini DisplayPort Multi display monitor",
+      "HDMI Multi display monitor"
+    ],
+    "OperatingSystem": [
+      "Red Hat Enterprise Linux (RHEL) or latest",
+      "Windows Server 2022 STD OEM Pack or latest"
+    ],
+    "HardDisk": [
+      "4X2TB HDD + 1X2TB Hot Spare",
+      "3X1TB SSD"
+    ],
+    "EthernetPorts": [
+      "Sixteen nos. Giga-bit ethernet port, teaming capable & Wake on LAN support",
+      "Eight nos. Giga-bit ethernet port, teaming capable & Wake on LAN support"
+    ],
+    "PowerSupply": [
+      "Dual Hot Redundant Swappable",
+      "Triple Hot Redundant Swappable"
+    ],
+    "DVDWriter": [
+      "None",
+      "In-built 16x DVD Writer"
+    ],
+    "Monitor": [
+      "27'', min Resolution: FHD 1920 x 1080, LED-backlit LCD/TFT, having HDMI/DP port and USB Port",
+      "32'', min Resolution: 4K 3840 x 2160, LED-backlit LCD/TFT, having HDMI/DP port and USB Port"
+    ],
+    "Keyboard": [
+      "Ergonomic Wired Keyboard",
+      "Compact Wired Keyboard"
+    ],
+    "Mouse": [
+      "Wired Optical Mouse",
+      "Wired Mechanical Mouse"
+    ],
+    "IOPorts": [
+      "USB 3.2 or higher, 1 no. Audio line-out, Display Ports, Ethernet Ports, Serial Ports",
+      "USB 3.2 or higher, 2 no. Audio line-out, Display Ports, Ethernet Ports"
+    ]
+  }
+]

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Automation - Siemens Configuration</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Embedded CSS to control logo size in Submitted Data */
+    .dc-logo {
+      max-width: 150px !important;
+      width: auto !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .submission-logo {
+      max-width: 150px !important;
+      width: auto !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    /* Sidebars (Left and Right) */
+    .sidebar-right {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid rgba(0, 109, 119, 0.1);
+      box-shadow: -4px 0 15px rgba(0, 109, 119, 0.1);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .sidebar-left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background: #ffffff;
+      border-right: 1px solid rgba(0, 109, 119, 0.1);
+      box-shadow: 4px 0 15px rgba(0, 109, 119, 0.1);
+      padding: 15px 15px 60px 15px;
+      display: flex;
+      flex-direction: column;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .sidebar-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #006d77;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(270deg);
+      margin: 5px 0;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .sidebar-nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #1f2a44;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar-nav a:hover {
+      background: #f9fbfc;
+      color: #006d77;
+    }
+
+    /* Left Sidebar Sections */
+    .sidebar-section {
+      width: 100%;
+      margin-bottom: 3px;
+    }
+
+    .sidebar-section details {
+      width: 100%;
+    }
+
+    .sidebar-section summary {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #006d77;
+      padding: 8px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0, 109, 119, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .sidebar-section summary:hover {
+      background: #f9fbfc;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #006d77;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked {
+      background: #006d77;
+      position: relative;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked::after {
+      content: "✔";
+      color: #ffffff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+    }
+
+    .checkbox-container label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #1f2a44;
+      cursor: pointer;
+    }
+
+    /* Submit Button in Sidebar */
+    .sidebar-submit-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #ffffff;
+      background: #006d77;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      position: sticky;
+      bottom: 15px;
+      width: calc(100% - 30px);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .sidebar-submit-btn:hover {
+      background: #005b66;
+    }
+
+    /* Error Message Styling */
+    .error-message {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #d32f2f;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 60px;
+      display: none;
+    }
+
+    /* Adjust main content to fit between two sidebars */
+    body {
+      padding-left: 220px;
+      padding-right: 220px;
+    }
+
+    /* Display Section */
+    .density-display-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 109, 119, 0.1);
+      display: none;
+    }
+
+    .density-display-container h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #006d77;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Table Styling (Excel-like) */
+    .io-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #1f2a44;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      border: 1px solid #d3d3d3;
+    }
+
+    .io-table th,
+    .io-table td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #d3d3d3;
+    }
+
+    .io-table th {
+      background: #006d77;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .io-table tr:nth-child(even) {
+      background: #f9fbfc;
+    }
+
+    .io-table .total-row {
+      font-weight: 600;
+      background: #e6f0fa;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .sidebar-right, .sidebar-left {
+        width: 150px;
+        padding: 10px 10px 60px 10px;
+      }
+
+      .sidebar-heading {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .sidebar-nav a {
+        font-size: 11px;
+        padding: 6px;
+      }
+
+      .sidebar-section summary {
+        font-size: 13px;
+        padding: 6px;
+      }
+
+      .checkbox-container input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+      }
+
+      .checkbox-container label {
+        font-size: 11px;
+      }
+
+      .checkbox-container input[type="checkbox"]:checked::after {
+        font-size: 9px;
+      }
+
+      .checkbox-group {
+        gap: 5px;
+      }
+
+      body {
+        padding-left: 170px;
+        padding-right: 170px;
+      }
+
+      .io-table {
+        font-size: 12px;
+      }
+
+      .io-table th,
+      .io-table td {
+        padding: 6px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-right, .sidebar-left {
+        width: 100%;
+        height: auto;
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding: 10px;
+      }
+
+      .sidebar-left {
+        border-bottom: 1px solid rgba(0, 109, 119, 0.1);
+        padding-bottom: 60px;
+      }
+
+      .sidebar-right {
+        border-top: 1px solid rgba(0, 109, 119, 0.1);
+      }
+
+      .sidebar-heading {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 16px;
+        margin: 5px 0;
+        text-align: center;
+      }
+
+      .sidebar-nav {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .sidebar-nav a {
+        font-size: 10px;
+        padding: 5px;
+      }
+
+      .sidebar-submit-btn {
+        position: sticky;
+        bottom: 10px;
+        width: calc(100% - 20px);
+      }
+
+      body {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .checkbox-group {
+        gap: 5px;
+      }
+
+      .io-table {
+        font-size: 10px;
+      }
+
+      .io-table th,
+      .io-table td {
+        padding: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Left Sidebar (Selections) -->
+  <div class="sidebar-left">
+    <div class="sidebar-heading">Selections</div>
+    <div class="sidebar-section">
+      <details>
+        <summary>I/O Types</summary>
+        <div class="checkbox-group">
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-di" value="DI">
+            <label for="io-di">DI</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-do" value="DO">
+            <label for="io-do">DO</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-ai" value="AI">
+            <label for="io-ai">AI</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-ao" value="AO">
+            <label for="io-ao">AO</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-tc" value="TC">
+            <label for="io-tc">TC</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="io-airtd" value="AI(RTD)">
+            <label for="io-airtd">AI(RTD)</label>
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-section">
+      <details>
+        <summary>PCNs</summary>
+        <div class="checkbox-group">
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-1" value="PCN1">
+            <label for="pcn-1">PCN1</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-2" value="PCN2">
+            <label for="pcn-2">PCN2</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-3" value="PCN3">
+            <label for="pcn-3">PCN3</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-4" value="PCN4">
+            <label for="pcn-4">PCN4</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-5" value="PCN5">
+            <label for="pcn-5">PCN5</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-6" value="PCN6">
+            <label for="pcn-6">PCN6</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-7" value="PCN7">
+            <label for="pcn-7">PCN7</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-8" value="PCN8">
+            <label for="pcn-8">PCN8</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-9" value="PCN9">
+            <label for="pcn-9">PCN9</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="pcn-10" value="PCN10">
+            <label for="pcn-10">PCN10</label>
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-section">
+      <details>
+        <summary>Channel Densities</summary>
+        <div class="checkbox-group">
+          <div class="checkbox-container">
+            <input type="checkbox" id="density-4" value="4">
+            <label for="density-4">4</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="density-6" value="6">
+            <label for="density-6">6</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="density-8" value="8">
+            <label for="density-8">8</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="density-16" value="16">
+            <label for="density-16">16</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="density-32" value="32">
+            <label for="density-32">32</label>
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="error-message" id="error-message"></div>
+    <button class="sidebar-submit-btn" onclick="displayChannelDensity()">Submit</button>
+  </div>
+
+  <!-- Right Sidebar (Navigation) -->
+  <div class="sidebar-right">
+    <div class="sidebar-heading">Licensing</div>
+    <div class="sidebar-nav">
+      <a href="siemens.html">Siemens</a>
+      <a href="rockwells.html">Rockwells</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">DC Automation</div>
+  </div>
+
+  <!-- Home Icon -->
+  <div id="homeIconContainer" class="home-icon-container">
+    <a href="index.html">
+      <svg id="homeIcon" class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Display Section -->
+  <div class="density-display-container" id="density-display-container">
+    <h3>Channel Density Results</h3>
+    <div class="density-display-content" id="density-display-content"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 DC Automation. All rights reserved.
+  </div>
+
+  <script>
+    // Data from Template.xlsx (Total IO counts for each PCN and I/O type)
+    const pcnData = {
+      "PCN1": { "DI": 1568, "DO": 480, "AI": 192, "AO": 32, "TC": 0, "AI(RTD)": 88 },
+      "PCN2": { "DI": 352, "DO": 32, "AI": 1376, "AO": 8, "TC": 0, "AI(RTD)": 280 },
+      "PCN3": { "DI": 544, "DO": 224, "AI": 336, "AO": 40, "TC": 0, "AI(RTD)": 184 },
+      "PCN4": { "DI": 448, "DO": 256, "AI": 96, "AO": 32, "TC": 0, "AI(RTD)": 48 },
+      "PCN5": { "DI": 672, "DO": 320, "AI": 192, "AO": 40, "TC": 0, "AI(RTD)": 48 },
+      "PCN6": { "DI": 480, "DO": 128, "AI": 112, "AO": 24, "TC": 0, "AI(RTD)": 72 },
+      "PCN7": { "DI": 544, "DO": 192, "AI": 160, "AO": 32, "TC": 0, "AI(RTD)": 56 },
+      "PCN8": { "DI": 600, "DO": 300, "AI": 250, "AO": 72, "TC": 0, "AI(RTD)": 150 },
+      "PCN9": { "DI": 0, "DO": 0, "AI": 0, "AO": 0, "TC": 0, "AI(RTD)": 0 },
+      "PCN10": { "DI": 0, "DO": 0, "AI": 0, "AO": 0, "TC": 0, "AI(RTD)": 0 }
+    };
+
+    // Original channel densities from Template.xlsx
+    const originalChannelDensities = {
+      "DI": 32,
+      "DO": 32,
+      "AI": 16,
+      "AO": 8,
+      "TC": 16,
+      "AI(RTD)": 8
+    };
+
+    // All possible I/O types
+    const allIoTypes = ["DI", "DO", "AI", "AO", "TC", "AI(RTD)"];
+
+    // Display the results in the Excel-like format with user-selected channel densities
+    function displayChannelDensity() {
+      const displayContainer = document.getElementById("density-display-container");
+      const displayContent = document.getElementById("density-display-content");
+      const errorMessage = document.getElementById("error-message");
+
+      // Clear previous content and error messages
+      displayContent.innerHTML = "";
+      errorMessage.style.display = "none";
+      errorMessage.textContent = "";
+
+      // Get selected I/O types
+      const ioTypes = [];
+      const ioCheckboxes = document.querySelectorAll('input[id^="io-"]:checked');
+      ioCheckboxes.forEach(checkbox => {
+        ioTypes.push(checkbox.value);
+      });
+
+      // Get selected PCNs
+      const selectedPcns = [];
+      const pcnCheckboxes = document.querySelectorAll('input[id^="pcn-"]:checked');
+      pcnCheckboxes.forEach(checkbox => {
+        selectedPcns.push(checkbox.value);
+      });
+
+      // Get selected channel densities
+      const channelDensities = [];
+      const densityCheckboxes = document.querySelectorAll('input[id^="density-"]:checked');
+      densityCheckboxes.forEach(checkbox => {
+        channelDensities.push(parseInt(checkbox.value));
+      });
+
+      // Validate inputs
+      if (ioTypes.length === 0) {
+        errorMessage.textContent = "Please select at least one I/O type.";
+        errorMessage.style.display = "block";
+        displayContainer.style.display = "none";
+        return;
+      }
+
+      if (selectedPcns.length === 0) {
+        errorMessage.textContent = "Please select at least one PCN.";
+        errorMessage.style.display = "block";
+        displayContainer.style.display = "none";
+        return;
+      }
+
+      if (channelDensities.length === 0) {
+        errorMessage.textContent = "Please select at least one channel density.";
+        errorMessage.style.display = "block";
+        displayContainer.style.display = "none";
+        return;
+      }
+
+      // Show the display container if all inputs are valid
+      displayContainer.style.display = "block";
+
+      // Create the table
+      const table = document.createElement("table");
+      table.className = "io-table";
+      const thead = document.createElement("thead");
+      const tbody = document.createElement("tbody");
+
+      // Header row: I/O Types
+      const ioTypeRow = document.createElement("tr");
+      ioTypeRow.innerHTML = `<th></th>`; // Empty cell for row label
+      ioTypes.forEach(ioType => {
+        ioTypeRow.innerHTML += `<th>${ioType}</th>`;
+      });
+      ioTypeRow.innerHTML += `<th>Total Modules</th>`;
+      thead.appendChild(ioTypeRow);
+      table.appendChild(thead);
+
+      // Data rows for each PCN
+      const totalModulesPerDensity = {};
+      channelDensities.forEach(density => {
+        totalModulesPerDensity[density] = {};
+        ioTypes.forEach(ioType => {
+          totalModulesPerDensity[density][ioType] = 0;
+        });
+      });
+
+      selectedPcns.forEach(pcn => {
+        // PCN label row
+        const pcnRow = document.createElement("tr");
+        pcnRow.innerHTML = `<td>${pcn}</td>`;
+        ioTypes.forEach(() => {
+          pcnRow.innerHTML += `<td></td>`; // Empty cells for I/O types
+        });
+        pcnRow.innerHTML += `<td></td>`; // Empty cell for Total Modules
+        tbody.appendChild(pcnRow);
+
+        // Total IO row
+        const totalIoRow = document.createElement("tr");
+        totalIoRow.innerHTML = `<td>Total IO</td>`;
+
+        ioTypes.forEach(ioType => {
+          const ioCount = pcnData[pcn][ioType];
+          totalIoRow.innerHTML += `<td>${ioCount}</td>`;
+        });
+        totalIoRow.innerHTML += `<td></td>`; // Empty cell for Total Modules
+        tbody.appendChild(totalIoRow);
+
+        // Module Count rows for each channel density
+        channelDensities.forEach(density => {
+          const moduleCountRow = document.createElement("tr");
+          moduleCountRow.innerHTML = `<td>Module Count (${density})</td>`;
+          let totalModulesForPcnAndDensity = 0;
+
+          ioTypes.forEach(ioType => {
+            const ioCount = pcnData[pcn][ioType];
+            const moduleCount = Math.ceil(ioCount / density);
+            totalModulesPerDensity[density][ioType] += moduleCount;
+            totalModulesForPcnAndDensity += moduleCount;
+            moduleCountRow.innerHTML += `<td>${moduleCount}</td>`;
+          });
+          moduleCountRow.innerHTML += `<td>${totalModulesForPcnAndDensity}</td>`;
+          tbody.appendChild(moduleCountRow);
+        });
+      });
+
+      // Total IO row (calculated using total modules and original channel density)
+      const totalIoSummaryRow = document.createElement("tr");
+      totalIoSummaryRow.className = "total-row";
+      totalIoSummaryRow.innerHTML = `<td>Total IO</td>`;
+      const referenceDensity = channelDensities[0]; // Use the first selected density for Total IO calculation
+      ioTypes.forEach(ioType => {
+        const totalModules = totalModulesPerDensity[referenceDensity][ioType];
+        const originalDensity = originalChannelDensities[ioType];
+        const calculatedTotalIO = totalModules * originalDensity;
+        totalIoSummaryRow.innerHTML += `<td>${calculatedTotalIO}</td>`;
+      });
+      totalIoSummaryRow.innerHTML += `<td></td>`; // Empty cell for Total Modules
+      tbody.appendChild(totalIoSummaryRow);
+
+      // Total Modules rows (one for each channel density)
+      channelDensities.forEach(density => {
+        const totalModulesRow = document.createElement("tr");
+        totalModulesRow.className = "total-row";
+        totalModulesRow.innerHTML = `<td>Total Modules (${density})</td>`;
+        let grandTotalModulesForDensity = 0;
+
+        ioTypes.forEach(ioType => {
+          const totalModules = totalModulesPerDensity[density][ioType];
+          totalModulesRow.innerHTML += `<td>${totalModules}</td>`;
+          grandTotalModulesForDensity += totalModules;
+        });
+        totalModulesRow.innerHTML += `<td>${grandTotalModulesForDensity}</td>`;
+        tbody.appendChild(totalModulesRow);
+      });
+
+      table.appendChild(tbody);
+      displayContent.appendChild(table);
+    }
+  </script>
+</body>
+</html>
